@@ -14,15 +14,25 @@
 
 * [**Edison - link**](https://www.sparkfun.com/products/13024)
 
-* [**Nuts and Bolts - link**](https://www.sparkfun.com/products/13187)
+* [**Nuts and Bolts - link**](https://www.sparkfun.com/products/13187) <<< These sets are no longer available, since the Edison chip is out of production. Enhanced Radio Devices ships their Explorer boards with suitable nuts and screws, and plastic spacers. My first explorer board did not come with usable nuts and screws, and I had trouble locating suitable spacers. An easy workaround: Once you have two suitable matching sets of screws and nuts (M2, or slightly smaller), you can fashion a spacer from a thin tube, e.g. a drinking straw that you cut to length, and  to keep the Edision from wiggling loose.  
 
-* **At least one Lithium Battery** (The larger battery will have a little longer battery life; but may be slightly bigger.)
+* **At least one Lithium Battery** Larger capacity batteries allow longer runtime before needing to be recharged. The cylindrical batteries hold up better if you carry the rig in a soft case than the flat ones. Some cases require the use of certain batteries.
+
  * [**2500mAh battery - link**](https://www.adafruit.com/products/328)
  * [**2000mAh battery - link**](https://www.sparkfun.com/products/8483)
+ * [**2200mAh Lithium Ion Cylindrical Battery - link**](https://www.adafruit.com/product/1781)
+ * [**4400mAh Lithium Ion Battery Pack - link**](https://www.adafruit.com/product/354)
+ 
+ 
+* **Cables**  (you may already have workable USB cables; you just need two cables to complete this process.  Doesn’t have to be a certain length either, just giving options if you have a preference for shorter or longer cables.)
 
-* **Cables**  (you may already have workable USB cables; you just need 2 to complete this process.  Doesn’t have to be a certain length either, just giving options if you have a preference for shorter or longer cables.)
- * [**3 ft long cable, USB-microB - link**](https://www.adafruit.com/products/592)
- * [**6 inch long cable, USB-microB - link**](https://www.adafruit.com/products/898)
+Example USB-A to Micro USB Cables: 
+* [**3 ft long cable, USB A - Micro USB - link**](https://www.adafruit.com/products/592)
+* [**6 inch long cable, USB A - Micro USB - link**](https://www.adafruit.com/products/898) 
+ 
+Example USB-C to Micro USB Cables: 
+* [**6 inch long cable, USB-C to Micro USB - link**](https://www.amazon.com/amazonbasics-double-braided-type-c-micro-b/dp/b07cwfnssn?&tag=admarketus-20&ref=pd_sl_a11B613E6E90698630840E2C92)
+
 
 ## Getting Physical: Build your rig/put the physical pieces together
 
@@ -30,9 +40,21 @@ The Explorer board is where all the communications are housed for the rig, as we
 
 The nuts and bolts are tiny, and the spaces are a little tight.  I find it really helps to use a set of tweezers and a small Phillips head screwdriver.
 
-It's easiest to start with the Explorer board and put on 2 nuts and gold screws (nuts on the side with most of the wiring) inside the little outline where the Edison will eventually sit.  Gold screws should be placed as shown, with nuts on the backside.  Then, lay the Edison board on top, aligning the screw holes.  Use a small Phillips head screwdriver to tighten the screws into the gold screws beneath them.  The Edison board should not wobble, and should feel secure when you are done.  Attach your battery into the explorer board plug.  A single red light should appear and stay lit.  During the course of your OpenAPS rig use, it's good practice to periodically check that the nuts and screws stay tightened.  If they come loose, the Edison can wobble off the connection to the Explorer board and you will either get looping failures (if it's loose) or be unable to connect to the Edison (if it comes completely off).
+# If you have the gold screws and spacers: 
+It's easiest to start with the Explorer board and put on 2 nuts and gold screws (nuts on the side with most of the wiring) inside the little outline where the Edison will eventually sit.  Gold screws should be placed as shown, with nuts on the backside.  Then, lay the Edison board on top, aligning the screw holes.  Use a small Phillips head screwdriver to tighten the screws into the gold screws beneath them.  The Edison board should not wobble, and should feel secure when you are done.  
+
+# If you use screws, nuts, and spacers
+Place the spacers between the board and the edision chip, it should be a snug fit. A small pincer comes in handy for this. You'll probably drop a nut or spacer at some point (I do) - consider working at a table, rather than sitting on the couch.
+
+## Attach your battery into the explorer board plug.  
+A single red light should appear and stay lit.  
+Note: You *can* flash the chip and install the software without a battery attached. However, a battery reduces the risk of weird problems related to intermitted power glitches throughout the flashing and installation process (e.g. Corrupted Jubilinux installations, frequent rebooting.) I've experienced such issue even with new USB-C and USB-A cables, and they are frustrating. 
+# Practice Safe Flashing - Flash with Battery Attached!
+
+During the course of your OpenAPS rig use, it's good practice to periodically check that the nuts and screws stay tightened.  If they come loose, the Edison can wobble off the connection to the Explorer board and you will either get looping failures (if it's loose) or be unable to connect to the Edison (if it comes completely off).
 
 ![Edison/Explorer Board rig with red light on](../../Images/Edison/Edison_Explorer_Board.png) 
+
 
 ## Software-build your rig
 
@@ -48,7 +70,9 @@ The Edison comes with an operating system that doesn’t work easily with OpenAP
 
 Let’s start by downloading the updated operating system (it’s called Jubilinux) to your computer so that we can install it later onto the Edison.  Go to Safari and download [Jubilinux](http://www.jubilinux.org/dist/) (jubilinux 0.3.0 is the only fully supported version; jubilinux 0.2.0 runs Debian jessie, which is NOT supported by Debian any longer).
 
-Now we move to the Edison.  You’ll see two microB USB ports on your explorer board.  One is labeled OTG (that’s for flashing) and one is labeled UART (that’s for logging into the Edison from a computer).  We will need to use both to flash.  We’re going to plug both of those into our computer’s USB ports using the cables listed in the parts list (Dexcom’s charging cable will work too). 
+Now we move to the Edison.  You’ll see two microB USB ports on your explorer board.  One is labeled OTG (that’s for flashing) and one is labeled UART (that’s for logging into the Edison from a computer).  We will need to use both to flash.  We’re going to plug both of those into our computer’s USB ports using the cables listed in the parts list (Dexcom’s charging cable will work too). Did you plug in the battery?
+
+Plug in the battery. 
 
 Note: Before starting to flash an Edison using a Mac, if you are using a Macbook with a USB-C Hub you may encounter some issues with the flashing process, including the wireless LAN setup not functioning correctly, so if you have an option to use a PC or Laptop with directly connected USB cables, it may be better to do so.
 
@@ -124,6 +148,8 @@ If you have a problem getting to the Edison login prompt, and possibly get a war
 ![Reboot](../../Images/Edison/reboot.png)
 
 #### **1-6.  Return to the other Terminal Window that we left off of in Step 4.**
+
+Is the battery attached? No? Go get it and plug it in, before flashing the Edison chip.
 
 * Enter `reboot`
 
